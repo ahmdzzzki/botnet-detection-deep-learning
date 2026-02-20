@@ -1,46 +1,42 @@
 # Botnet Detection using Deep Learning (LSTM & FCNN)
 
-Deep learning–based botnet detection system using advanced preprocessing and sequence modeling techniques on the **CTU-13 cybersecurity dataset**.
-This project explores how temporal neural networks can identify malicious network traffic under highly imbalanced data conditions.
+Deep learning–based botnet detection project using **LSTM networks and Fully Connected Neural Networks (FCNN)** trained on the **CTU-13 cybersecurity dataset**.
+This repository demonstrates how temporal modeling and imbalance-aware learning improve malicious traffic detection in real-world network environments.
 
 ---
 
-## 📌 Overview
+## 📌 Project Overview
 
-Botnets remain one of the most critical cybersecurity threats, enabling large-scale attacks such as Distributed Denial of Service (DDoS), data exfiltration, and automated intrusion campaigns. Traditional detection systems struggle to identify evolving attack patterns due to their reliance on static signatures.
+Botnets are networks of compromised devices capable of launching coordinated cyberattacks such as DDoS, spam campaigns, and data exfiltration. Traditional signature-based systems often fail to detect evolving threats.
 
-This project applies **deep learning approaches** to detect botnet activity from real-world network traffic by learning temporal and statistical patterns directly from data.
+This project applies deep learning techniques to automatically learn behavioral patterns from network traffic flows and classify traffic as **normal** or **botnet activity**.
 
-The study evaluates multiple neural architectures and demonstrates the effectiveness of **Stacked LSTM models** for detecting minority attack classes in imbalanced datasets.
+Key focus areas:
 
----
-
-## 🎯 Objectives
-
-* Detect botnet traffic from network flow data
-* Handle severe class imbalance in cybersecurity datasets
-* Compare sequential and fully connected neural architectures
-* Improve detection robustness using advanced preprocessing and optimization techniques
+* Temporal sequence modeling using LSTM
+* Imbalanced data learning
+* Network traffic feature engineering
+* Deep learning evaluation for cybersecurity tasks
 
 ---
 
 ## 🧠 Models Implemented
 
-### 1. Bidirectional LSTM with Attention
+### Bidirectional LSTM with Attention
 
-* Captures forward and backward temporal dependencies
-* Attention mechanism highlights important sequence features
+* Learns forward & backward temporal dependencies
+* Attention mechanism emphasizes important sequence information
 
-### 2. Stacked LSTM (Best Performing Model)
+### Stacked LSTM ⭐ (Best Performing)
 
-* Multi-layer temporal representation learning
-* Batch normalization and progressive dropout
+* Multi-layer sequential learning
+* Batch normalization + dropout regularization
 * Optimized for imbalanced classification
 
-### 3. Fully Connected Neural Network (FCNN)
+### Fully Connected Neural Network (FCNN)
 
 * Learns high-dimensional feature interactions
-* Serves as non-sequential baseline comparison
+* Serves as baseline comparison model
 
 ---
 
@@ -49,10 +45,10 @@ The study evaluates multiple neural architectures and demonstrates the effective
 ### Data Preprocessing
 
 * Missing value handling
-* Invalid flow removal
-* Outlier management using IQR clipping
-* Feature normalization (RobustScaler)
-* Label binarization and deduplication
+* Invalid network flow removal
+* IQR-based outlier clipping
+* Feature normalization using RobustScaler
+* Label binarization & deduplication
 
 ### Feature Engineering
 
@@ -63,7 +59,7 @@ The study evaluates multiple neural architectures and demonstrates the effective
   * Packets per second
   * Bytes per second
   * Source byte ratio
-* Mean encoding for categorical variables
+* Mean encoding for categorical attributes
 
 ### Imbalance Handling
 
@@ -75,19 +71,18 @@ The study evaluates multiple neural architectures and demonstrates the effective
 
 * 5-Fold Stratified Cross Validation
 * Early Stopping
-* ReduceLROnPlateau
-* Adam Optimizer with learning rate scheduling
+* Learning rate scheduling
+* Adam optimizer
 
 ---
 
 ## 📊 Dataset
 
 **CTU-13 Dataset**
-A real-world labeled network traffic dataset containing normal and botnet communication flows.
 
-* ~1.6M network records
-* Highly imbalanced classes
-* Flow-based network features
+* Real-world labeled network traffic
+* ~1.6M flow records
+* Highly imbalanced botnet vs normal traffic
 
 ---
 
@@ -100,31 +95,27 @@ A real-world labeled network traffic dataset containing normal and botnet commun
 | FCNN + SMOTETomek   | 0.799     | 0.47      | 0.91     | 0.62     |
 | FCNN + SMOTE        | 0.806     | 0.46      | 0.91     | 0.61     |
 
-✅ Stacked LSTM achieved the best performance in detecting minority botnet traffic.
+Stacked LSTM achieved the strongest performance for detecting minority botnet traffic.
 
 ---
 
-## 🧩 Project Structure
+## 📂 Repository Structure
 
 ```
 botnet-detection-deep-learning/
 │
-├── README.md
+├── data/                # CTU-13 dataset samples & processed flows
+├── figures/             # Visualizations (PR curves, plots, analysis figures)
+├── models/              # Saved trained deep learning models
+├── notebooks/           # Jupyter notebooks for experiments & training
+│
+├── scaler.npy           # Saved feature scaler
+├── selected_features.npy # Selected feature indices
+│
 ├── botnet-detection-deep-learning-ctu13.pdf
-├── notebooks/
-├── src/
-├── results/
-└── requirements.txt
+│                         # Full technical research report
+└── README.md
 ```
-
----
-
-## 🚀 Key Contributions
-
-* Designed deep learning pipeline for cybersecurity anomaly detection
-* Engineered temporal and statistical network features
-* Applied imbalance-aware learning strategies
-* Demonstrated effectiveness of LSTM-based models for botnet detection
 
 ---
 
@@ -134,15 +125,24 @@ botnet-detection-deep-learning/
 * TensorFlow / Keras
 * Scikit-learn
 * Pandas & NumPy
-* Matplotlib & Seaborn
+* Matplotlib
 
 ---
 
 ## 📄 Research Report
 
-Full technical report available here:
+Full technical documentation:
 
-👉 **[Botnet Detection Technical Report](botnet-detection-deep-learning-ctu13.pdf)**
+👉 **botnet-detection-deep-learning-ctu13.pdf**
+
+---
+
+## 🚀 Key Contributions
+
+* Developed deep learning pipeline for cybersecurity anomaly detection
+* Engineered temporal & statistical network traffic features
+* Applied imbalance-aware learning techniques
+* Demonstrated effectiveness of stacked LSTM architectures
 
 ---
 
@@ -155,15 +155,13 @@ GitHub: https://github.com/ahmdzzzki
 
 ---
 
-## 🔮 Future Work
+## 🔮 Future Improvements
 
-* Real-time network deployment
-* CNN–LSTM hybrid architectures
+* Real-time detection pipeline
+* CNN–LSTM hybrid models
 * Explainable AI (SHAP / LIME)
-* Evaluation on CICIDS2017 and UNSW-NB15 datasets
+* Evaluation on larger intrusion datasets
 
 ---
 
-## ⭐ If you find this project useful
-
-Consider giving this repository a star to support the work!
+⭐ If you find this project useful, consider starring the repository!
